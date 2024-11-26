@@ -17,13 +17,13 @@ public class Calculator {
             int num2 = ClintNumInput(input);
 
             // Asking the client what operation
-            System.out.print("What operation? \n");
-            System.out.println("1) Addition \n 2) Subtraction \n 3) Multiplication \n 4) Division");
-            System.out.println("Choose from 1, 4");
+            System.out.print("What operation?");
+            System.out.println("\n 1) Addition \n 2) Subtraction \n 3) Multiplication \n 4) Division");
+            System.out.println("Choose from 1 - 4");
             int operation = ClintNumInput(input);
 
             // Outputting the results of the operation
-            System.out.print("This is answer \n");
+            System.out.print("This is answer \n ");
             OperationOutput(operation, num1, num2);
 
             // Asking the client to continue (y/n)
