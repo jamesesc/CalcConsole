@@ -132,17 +132,44 @@ public class Calculator {
     }
 
     // Method to handle Calc continuation functionality
-    public static boolean continuationStatus(Scanner input, boolean theRepeat) {
-        boolean status = true;
+    public static boolean continuationStatus(Scanner theInput, boolean theRepeat) {
         System.out.println("Do you wish to continue? (y/n)");
-        String answer = input.next();
-        if (answer.equals("n")) {
-            status = false;
-        }
-        return status;
+        return continuationInputHandle(theInput);
+
+
+//        boolean status = true;
+//        System.out.println("Do you wish to continue? (y/n)");
+//        String answer = input.next();
+//        if (answer.equals("n")) {
+//            status = false;
+//        }
+//        return status;
     }
 
 
+    public static boolean continuationInputHandle(Scanner theInput) {
+        String[] validAnswer = {"Yes", "yes", "Y", "y", "No", "no", "N", "n"};
+        boolean realAnswer = false;
+        boolean isAnswerValid = false;
+
+        while (!isAnswerValid) {
+            String answer = theInput.nextLine();
+            for (int i = 0; i < validAnswer.length; i++) {
+                if (answer.equals(validAnswer[i])) {
+                    isAnswerValid = true;
+
+                    if (validAnswer[i].toLowerCase().contains("y")) {
+                        realAnswer = true;
+                    }
+                }
+            }
+
+            if (!isAnswerValid) {
+                System.out.println("Not a valid answer. Try again");
+            }
+        }
+        return realAnswer;
+    }
 
 
 
