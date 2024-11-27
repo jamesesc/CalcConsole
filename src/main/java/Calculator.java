@@ -17,22 +17,7 @@ public class Calculator {
             int num2 = ClintNumInput(input);
 
             // Asking the client what operation
-            System.out.print("What operation? \n");
-
-            String[] operationArray = {"Addition", "Subtraction", "Multiplication", "Division",
-                                        "Modules", "Exponents", "Square Roots", "Trig"};
-
-            for (int i = 0; i < 4; i++) {
-                for (int j = 0; j < 1; j++) {
-                    String operationOutput = String.format("%-3s%-17s%-3s%-17s",
-                                                            i + 1 + ")", operationArray[i],
-                                                            i + 5 + ")", operationArray[i + 4]);
-                    System.out.println(operationOutput);
-                    // System.out.print(operationArray[i]);
-                    // System.out.println(operationArray[i + 4]);
-
-                }
-            }
+            printOperationChoices();
 
             System.out.println("Choose from 1 - 8");
             int operation = ClintNumInput(input);
@@ -44,6 +29,24 @@ public class Calculator {
             // Asking the client to continue (y/n)
             repeat = continuationStatus(input, repeat);
         } while (repeat);
+    }
+
+    public static void printOperationChoices() {
+        System.out.print("What operation? \n");
+
+        String[] operationArray = {"Addition", "Subtraction", "Multiplication", "Division",
+                "Modules", "Exponents", "Square Roots", "Trig"};
+
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 1; j++) {
+                String operationOutput = String.format("%-3s%-17s%-3s%-17s",
+                        i + 1 + ")", operationArray[i],
+                        i + 5 + ")", operationArray[i + 4]);
+                System.out.println(operationOutput);
+                // System.out.print(operationArray[i]);
+                // System.out.println(operationArray[i + 4]);
+            }
+        }
     }
 
     // Method to read the console for int, and returning that int
