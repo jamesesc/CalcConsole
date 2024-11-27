@@ -1,6 +1,7 @@
 <component name="InspectionProjectProfileManager">
   <profile version="1.0">
     <option name="myName" value="Project Default" />
+    <inspection_tool class="CommentedOutCode" enabled="true" level="INFORMATION" enabled_by_default="true" />
     <inspection_tool class="ConstantValue" enabled="true" level="INFORMATION" enabled_by_default="true" />
     <inspection_tool class="unused" enabled="true" level="INFORMATION" enabled_by_default="true" checkParameterExcludingHierarchy="false">
       <option name="LOCAL_VARIABLE" value="true" />
