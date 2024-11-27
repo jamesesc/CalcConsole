@@ -17,20 +17,25 @@ public class Calculator {
             int num2 = ClintNumInput(input);
 
             // Asking the client what operation
-            System.out.print("What operation?");
-            System.out.println("\n 1) Addition \n 2) Subtraction \n 3) Multiplication \n 4) Division");
-            System.out.println("Choose from 1 - 4");
-            int operation = ClintNumInput(input);
+            System.out.print("What operation? \n");
 
             String[] operationArray = {"Addition", "Subtraction", "Multiplication", "Division",
                                         "Modules", "Exponents", "Square Roots", "Trig"};
 
             for (int i = 0; i < 4; i++) {
                 for (int j = 0; j < 1; j++) {
-                    System.out.print(operationArray[i]);
-                    System.out.println(operationArray[i + 4]);
+                    String operationOutput = String.format("%-3s%-17s%-3s%-17s",
+                                                            i + 1 + ")", operationArray[i],
+                                                            i + 5 + ")", operationArray[i + 4]);
+                    System.out.println(operationOutput);
+                    // System.out.print(operationArray[i]);
+                    // System.out.println(operationArray[i + 4]);
+
                 }
             }
+
+            System.out.println("Choose from 1 - 8");
+            int operation = ClintNumInput(input);
 
             // Outputting the results of the operation
             System.out.print("This is answer \n ");
