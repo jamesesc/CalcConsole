@@ -10,27 +10,20 @@ public class Calculator {
 
         // Do-While Loop for Calc continuation functionality
         do {
-            // Asking the client their 2 numbers
-            System.out.println("What is the first number?");
-            int num1 = ClintNumInput(input);
-            System.out.println("What is the second number?");
-            int num2 = ClintNumInput(input);
-
-            // Asking the client what operation
+            // Printing operation choices to the client
             printOperationChoices();
+            // Getting operation choices from the client
+            int operation = operationChoice(input);
 
-            System.out.println("Choose from 1 - 8");
-            int operation = ClintNumInput(input);
-
-            // Outputting the results of the operation
-            System.out.print("This is answer \n ");
-            OperationOutput(operation, num1, num2);
+            // Base on the operation, there's differ behavior
+            operationChoicesBehavior(input, operation);
 
             // Asking the client to continue (y/n)
             repeat = continuationStatus(input, repeat);
         } while (repeat);
     }
 
+    // Printing the various operation choices
     public static void printOperationChoices() {
         System.out.print("What operation? \n");
 
@@ -49,13 +42,58 @@ public class Calculator {
         }
     }
 
+    // Methods here
+
+
     // Method to read the console for int, and returning that int
     public static int ClintNumInput (Scanner theInput) {
         return theInput.nextInt();
     }
 
+    // Getting the client desire operation
+    public static int operationChoice(Scanner theInput) {
+        System.out.println("Choose from 1 - 8");
+        return ClintNumInput(theInput);
+    }
+
+
+    public static void operationChoicesBehavior(Scanner theInput, int theOperation) {
+        int num1 = 0;
+        int num2 = 0;
+
+        switch (theOperation) {
+            case 1, 2, 3, 4, 5:
+                // Asking the client their 2 numbers
+                System.out.println("What is the first number?");
+                num1 = ClintNumInput(theInput);
+                System.out.println("What is the second number?");
+                num2 = ClintNumInput(theInput);
+                break;
+            case 6:
+                System.out.println("What is your base number?");
+                num1 = ClintNumInput(theInput);
+                System.out.println("What is the exponent?");
+                num2 = ClintNumInput(theInput);
+                break;
+            case 7:
+                System.out.println("What is the number you want to Square root?");
+                num1 = ClintNumInput(theInput);
+                break;
+            case 8:
+                System.out.println("What is the angle of Sin you want?");
+                num1 = ClintNumInput(theInput);
+                break;
+        }
+
+        // Sending over our Operation and Num
+        operationOutput(theOperation, num1, num2);
+    }
+
     // Method to handle the operation
-    public static void OperationOutput(int theOperation, int theNum1, int theNum2) {
+    public static void operationOutput(int theOperation, int theNum1, int theNum2) {
+        // Outputting the results of the operation
+        System.out.print("This is answer \n ");
+
         // theOperation # is base on the choices of operation
         if (theOperation == 1) {
             System.out.println(theNum1 + " + " + theNum2 + " = " + (theNum1 + theNum2));
@@ -87,6 +125,12 @@ public class Calculator {
         }
         return status;
     }
+
+
+
+
+
+
 
     // Very first Calc Design
     public static void SimpleCalcV1() {
