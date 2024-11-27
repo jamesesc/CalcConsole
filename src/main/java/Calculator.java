@@ -60,8 +60,17 @@ public class Calculator {
             System.out.println(theNum1 + " - " + theNum2 + " = " + (theNum1 - theNum2));
         } else if (theOperation == 3) {
             System.out.println(theNum1 + " * " + theNum2 + " = " + (theNum1 * theNum2));
-        } else {
+        } else if (theOperation == 4) {
             System.out.println(theNum1 + " / " + theNum2 + " = " + (theNum1 / theNum2));
+        } else if (theOperation == 5) {
+            System.out.println(theNum1 + " % " + theNum2 + " = " + (theNum1 % theNum2));
+        } else if (theOperation == 6) {
+            // Exponents
+            System.out.println("The exponent of " + theNum1 + " to " + theNum2 + " = " + Math.pow(theNum1, theNum2));
+        } else if (theOperation == 7) {
+            System.out.println("Square root of " + theNum1 + " = " + Math.sqrt(theNum1)); // Square root
+        } else if (theOperation == 8) {
+            System.out.println("The trig sin of " + theNum1 + " = " + Math.sin(theNum1)); //
         }
     }
 
