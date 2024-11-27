@@ -23,44 +23,41 @@ public class Calculator {
         } while (repeat);
     }
 
+    // Our Methods
+
+    // Read and Validate Client Num Input
+    public static int ClintNumInput (Scanner theInput) {
+        int num = 0; // Initialize for the Num input
+        boolean isInt = false; // Used for Num = Int validation
+        while (!isInt) {
+            if (theInput.hasNextInt()) {
+                num = theInput.nextInt(); // If num = Int: true; Assign in num
+                isInt = true; // To get out of the loop
+            } else {
+                System.out.println("Not an integer, Try again");
+                theInput.next(); // Removing token
+            }
+        }
+        return num; // returning a valid num
+    }
+
     // Printing the various operation choices
     public static void printOperationChoices() {
         System.out.print("What operation? \n");
-
+        // String array to hold our Operation Choices
         String[] operationArray = {"Addition", "Subtraction", "Multiplication", "Division",
                 "Modules", "Exponents", "Square Roots", "Trig"};
-
+        // Nested For-Loop for Printing Operation List Side-by-Side
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 1; j++) {
+                // String format to specifically structure the output
                 String operationOutput = String.format("%-3s%-17s%-3s%-17s",
                         i + 1 + ")", operationArray[i],
                         i + 5 + ")", operationArray[i + 4]);
                 System.out.println(operationOutput);
-                // System.out.print(operationArray[i]);
-                // System.out.println(operationArray[i + 4]);
             }
         }
     }
-
-    // Methods here
-
-
-    public static int ClintNumInput (Scanner theInput) {
-        int num = 0;
-        boolean isInt = false;
-        while (!isInt) {
-            if (theInput.hasNextInt()) {
-                num = theInput.nextInt();
-                isInt = true;
-            } else {
-                System.out.println("Not an integer, Try again");
-                theInput.next();
-            }
-        }
-        return num;
-    }
-
-
 
     // Getting the client desire operation
     public static int operationChoice(Scanner theInput) {
@@ -68,14 +65,15 @@ public class Calculator {
         return ClintNumInput(theInput);
     }
 
-
+    // Method for each Operation behavior to ask the Num
     public static void operationChoicesBehavior(Scanner theInput, int theOperation) {
+        // int var for num
         int num1 = 0;
         int num2 = 0;
 
+        // Switch case for each operation
         switch (theOperation) {
             case 1, 2, 3, 4, 5:
-                // Asking the client their 2 numbers
                 System.out.println("What is the first number?");
                 num1 = ClintNumInput(theInput);
                 System.out.println("What is the second number?");
@@ -100,16 +98,12 @@ public class Calculator {
                 num1 = ClintNumInput(theInput);
                 break;
         }
-
-        // Sending over our Operation and Num
-        operationOutput(theOperation, num1, num2);
+        operationOutput(theOperation, num1, num2); // Passing operation; Our 2 num input
     }
 
-    // Method to handle the operation
+    // Method to handle each operation
     public static void operationOutput(int theOperation, int theNum1, int theNum2) {
-        // Outputting the results of the operation
         System.out.print("This is answer \n ");
-
         // theOperation # is base on the choices of operation
         if (theOperation == 1) {
             System.out.println(theNum1 + " + " + theNum2 + " = " + (theNum1 + theNum2));
@@ -122,12 +116,11 @@ public class Calculator {
         } else if (theOperation == 5) {
             System.out.println(theNum1 + " % " + theNum2 + " = " + (theNum1 % theNum2));
         } else if (theOperation == 6) {
-            // Exponents
             System.out.println("The exponent of " + theNum1 + " to " + theNum2 + " = " + Math.pow(theNum1, theNum2));
         } else if (theOperation == 7) {
-            System.out.println("Square root of " + theNum1 + " = " + Math.sqrt(theNum1)); // Square root
+            System.out.println("Square root of " + theNum1 + " = " + Math.sqrt(theNum1));
         } else if (theOperation == 8) {
-            System.out.println("The trig sin of " + theNum1 + " = " + Math.sin(theNum1)); //
+            System.out.println("The trig sin of " + theNum1 + " = " + Math.sin(theNum1));
         }
     }
 
@@ -135,36 +128,28 @@ public class Calculator {
     public static boolean continuationStatus(Scanner theInput, boolean theRepeat) {
         System.out.println("Do you wish to continue? (y/n)");
         return continuationInputHandle(theInput);
-
-
-//        boolean status = true;
-//        System.out.println("Do you wish to continue? (y/n)");
-//        String answer = input.next();
-//        if (answer.equals("n")) {
-//            status = false;
-//        }
-//        return status;
     }
 
-
+    // Method to handle the continuation Input
     public static boolean continuationInputHandle(Scanner theInput) {
+        // String array for the list of valid answer
         String[] validAnswer = {"Yes", "yes", "Y", "y", "No", "no", "N", "n"};
+        /* Boolean for realAnswer when found, and when Answer is valid */
         boolean realAnswer = false;
         boolean isAnswerValid = false;
 
+        // While-loop to repeat until answer is valid
         while (!isAnswerValid) {
-            String answer = theInput.nextLine();
-            for (int i = 0; i < validAnswer.length; i++) {
-                if (answer.equals(validAnswer[i])) {
-                    isAnswerValid = true;
-
+            String answer = theInput.nextLine(); // Storing the client answer
+            for (int i = 0; i < validAnswer.length; i++) { // For-loop to cycle through the array
+                if (answer.equals(validAnswer[i])) { // Checking if answer == Answer array
+                    isAnswerValid = true; // When true; Set Loop conditions to end
                     if (validAnswer[i].toLowerCase().contains("y")) {
-                        realAnswer = true;
+                        realAnswer = true; // Finding if Answer contains Y
                     }
                 }
             }
-
-            if (!isAnswerValid) {
+            if (!isAnswerValid) { // If the Answer is not valid, try again
                 System.out.println("Not a valid answer. Try again");
             }
         }
