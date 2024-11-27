@@ -22,6 +22,16 @@ public class Calculator {
             System.out.println("Choose from 1 - 4");
             int operation = ClintNumInput(input);
 
+            String[] operationArray = {"Addition", "Subtraction", "Multiplication", "Division",
+                                        "Modules", "Exponents", "Square Roots", "Trig"};
+
+            for (int i = 0; i < 4; i++) {
+                for (int j = 0; j < 1; j++) {
+                    System.out.print(operationArray[i]);
+                    System.out.println(operationArray[i + 4]);
+                }
+            }
+
             // Outputting the results of the operation
             System.out.print("This is answer \n ");
             OperationOutput(operation, num1, num2);
