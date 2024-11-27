@@ -45,10 +45,22 @@ public class Calculator {
     // Methods here
 
 
-    // Method to read the console for int, and returning that int
     public static int ClintNumInput (Scanner theInput) {
-        return theInput.nextInt();
+        int num = 0;
+        boolean isInt = false;
+        while (!isInt) {
+            if (theInput.hasNextInt()) {
+                num = theInput.nextInt();
+                isInt = true;
+            } else {
+                System.out.println("Not an integer, Try again");
+                theInput.next();
+            }
+        }
+        return num;
     }
+
+
 
     // Getting the client desire operation
     public static int operationChoice(Scanner theInput) {
