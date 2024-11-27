@@ -68,6 +68,10 @@ public class Calculator {
                 num1 = ClintNumInput(theInput);
                 System.out.println("What is the second number?");
                 num2 = ClintNumInput(theInput);
+                while(num2 == 0) {
+                    System.out.println("Can't do 0. Change your second number");
+                    num2 = ClintNumInput(theInput);
+                }
                 break;
             case 6:
                 System.out.println("What is your base number?");
